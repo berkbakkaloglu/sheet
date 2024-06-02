@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yeni Karakter Oluştur</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1>Yeni Karakter Oluştur</h1>
+    <form action="/api/characters" method="POST" id="character-form">
+        <label for="name">Karakter İsmi:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="height">Boy (cm):</label>
+        <input type="number" id="height" name="height" required>
+
+        <label for="weight">Kilo (kg):</label>
+        <input type="number" id="weight" name="weight" required>
+
+        <label for="gender">Cinsiyet:</label>
+        <input type="text" id="gender" name="gender" required>
+
+        <label for="race">Irk:</label>
+        <select id="race" name="race" required>
+            <option value="Elf">Elf</option>
+            <option value="Gnome">Gnome</option>
+            <option value="Half Orc">Half Orc</option>
+            <option value="Dwarf">Dwarf</option>
+            <option value="Human">Human</option>
+            <option value="Halfling">Halfling</option>
+            <option value="Half Elf">Half Elf</option>
+        </select>
+
+        <label for="class">Sınıf:</label>
+        <select id="class" name="class" required>
+            <option value="fighter">Fighter</option>
+            <option value="ranger">Ranger</option>
+            <option value="wizard">Wizard</option>
+            <option value="cleric">Cleric</option>
+            <option value="monk">Monk</option>
+            <option value="bard">Bard</option>
+            <option value="druid">Druid</option>
+            <option value="rogue">Rogue</option>
+            <option value="paladin">Paladin</option>
+            <option value="barbarian">Barbarian</option>
+        </select>
+
+        <h2>Stat Puanları:</h2>
+        <label for="strength">Strength:</label>
+        <input type="number" id="strength" name="stats[strength]" value="0" required>
+        
+        <label for="dexterity">Dexterity:</label>
+        <input type="number" id="dexterity" name="stats[dexterity]" value="0" required>
+
+        <label for="constitution">Constitution:</label>
+        <input type="number" id="constitution" name="stats[constitution]" value="0" required>
+
+        <label for="intelligence">Intelligence:</label>
+        <input type="number" id="intelligence" name="stats[intelligence]" value="0" required>
+
+        <label for="wisdom">Wisdom:</label>
+        <input type="number" id="wisdom" name="stats[wisdom]" value="0" required>
+
+        <label for="charisma">Charisma:</label>
+        <input type="number" id="charisma" name="stats[charisma]" value="0" required>
+
+        <h2>Envanter:</h2>
+        <input type="text" id="inventory-item">
+        <button type="button" id="add-inventory">Envantere Ekle</button>
+        <ul id="inventory-list"></ul>
+
+        <h2>Büyüler:</h2>
+        <input type="text" id="spell-item">
+        <button type="button" id="add-spell">Büyü Ekle</button>
+        <ul id="spell-list"></ul>
+
+        <label for="biography">Özgeçmiş:</label>
+        <textarea id="biography" name="biography" required></textarea>
+
+        <button type="submit">Karakter Oluştur</button>
+    </form>
+
+    <script src="/scripts.js"></script>
+</body>
+</html>

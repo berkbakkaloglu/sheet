@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= character.name %> - Karakter Detayları</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <h1><%= character.name %> - Karakter Detayları</h1>
+
+    <form id="character-form" action="/api/characters/<%= character._id %>" method="POST">
+        <label for="height">Boy (cm):</label>
+        <input type="number" id="height" name="height" value="<%= character.height %>" required>
+
+        <label for="weight">Kilo (kg):</label>
+        <input type="number" id="weight" name="weight" value="<%= character.weight %>" required>
+
+        <label for="gender">Cinsiyet:</label>
+        <input type="text" id="gender" name="gender" value="<%= character.gender %>" required>
+
+        <label for="race">Irk:</label>
+        <input type="text" id="race" value="<%= character.race %>" disabled>
+
+        <label for="class">Sınıf:</label>
+        <input type="text" id="class" value="<%= character.class %>" disabled>
+
+        <h2>Stat Puanları:</h2>
+        <label for="strength">Strength:</label>
+        <input type="number" id="strength" name="stats[strength]" value="<%= character.stats.strength %>" required>
+        
+        <label for="dexterity">Dexterity:</label>
+        <input type="number" id="dexterity" name="stats[dexterity]" value="<%= character.stats.dexterity %>" required>
+
+        <label for="constitution">Constitution:</label>
+        <input type="number" id="constitution" name="stats[constitution]" value="<%= character.stats.constitution %>" required>
+
+        <label for="intelligence">Intelligence:</label>
+        <input type="number" id="intelligence" name="stats[intelligence]" value="<%= character.stats.intelligence %>" required>
+
+        <label for="wisdom">Wisdom:</label>
+        <input type="number" id="wisdom" name="stats[wisdom]" value="<%= character.stats.wisdom %>" required>
+
+        <label for="charisma">Charisma:</label>
+        <input type="number" id="charisma" name="stats[charisma]" value="<%= character.stats.charisma %>" required>
+
+        <h2>Envanter:</h2>
+        <input type="text" id="inventory-item">
+        <button type="button" id="add-inventory">Envantere Ekle</button>
+        <ul id="inventory-list">
+            <% character.inventory.forEach(item => { %>
+                <li><%= item %></li>
+            <% }) %>
+        </ul>
+
+        <h2>Büyüler:</h2>
+        <input type="text" id="spell-item">
+        <button type="button" id="add-spell">Büyü Ekle</button>
+        <ul id="spell-list">
+            <% character.spells.forEach(spell => { %>
+                <li><%= spell %></li>
+            <% }) %>
+        </ul>
+
+        <label for="biography">Özgeçmiş:</label>
+        <textarea id="biography" name="biography" required><%= character.biography %></textarea>
+
+        <button type="submit">Güncelle</button>
+    </form>
+
+    <h2>Avatar</h2>
+    <% if (character.avatar) { %>
+        <img src="<%= character.avatar %>" alt="<%= character.name %>'s Avatar" width="100" height="100">
+    <% } %>
+    <form action="/api/characters/<%= character._id %>/avatar" method="POST" enctype="multipart/form-data">
+        <input type="file" name="avatar" accept="image/jpeg, image/png" required>
+        <button type="submit">Avatar Yükle</button>
+    </form>
+
+    <script src="/scripts.js"></script>
+</body>
+</html>
